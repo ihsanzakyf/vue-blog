@@ -1,22 +1,9 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import PostList from '@/components/PostList.vue'
+import getPosts from '@/composable/GetPosts.js'
 
-const posts = ref([])
-const error = ref(null)
-
-const fetchData = async () => {
-  try {
-    let data = await fetch('http://localhost:3000/posts')
-
-    if (data.ok) {
-      throw new Error('Tidak ada data bung!')
-    }
-    posts.value = await data.json()
-  } catch (err) {
-    error.value = err.message
-  }
-}
+const { posts, fetchData, error } = getPosts()
 
 onMounted(() => {
   fetchData()
