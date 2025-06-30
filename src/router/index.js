@@ -9,10 +9,21 @@ const router = createRouter({
       component: () => import('@/views/Home.vue'),
     },
     {
-      path: '/posts/:id',
-      name: 'show',
-      component: () => import('@/views/posts/Show.vue'),
+      path: '/posts/create',
+      name: 'createPost',
+      component: () => import('@/views/posts/CreatePost.vue'),
       props: true,
+    },
+    {
+      path: '/posts/:id',
+      name: 'showPost',
+      component: () => import('@/views/posts/ShowPost.vue'),
+      props: true,
+    },
+    {
+      path: '/tag/:tag',
+      name: 'tag',
+      component: () => import('@/views/posts/Tag.vue'),
     },
   ],
 })

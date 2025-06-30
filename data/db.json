@@ -1,46 +1,101 @@
 {
   "posts": [
     {
-      "id": 1,
+      "id": "1",
       "title": "Artikel Pertama",
       "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur labore expedita mollitia perspiciatis!",
-      "tags": ["web", "vue", "node"]
+      "tags": [
+        "web",
+        "vue",
+        "node"
+      ]
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "Artikel Kedua",
       "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur labore expedita mollitia perspiciatis!",
-      "tags": ["js", "html", "css"]
+      "tags": [
+        "js",
+        "html",
+        "css"
+      ]
     },
     {
       "title": "Artikel ke tiga",
       "body": "Isi dari artikel tiga",
-      "tags": ["vue", "firebase"],
-      "id": 3
+      "tags": [
+        "vue",
+        "firebase"
+      ],
+      "id": "3"
     },
     {
       "title": "Artikel ke empat",
       "body": "isi artikel ke empat",
-      "tags": ["vue"],
-      "id": 4
+      "tags": [
+        "vue"
+      ],
+      "id": "4"
     },
     {
       "title": "Create post from clean blog",
       "body": "Ini adalah isi post dari clean blog yang sudah diintegrasikan di dalam project vue cli",
       "tags": [],
-      "id": 5
+      "id": "5"
     },
     {
       "title": "Data baru",
       "body": "Input body data baru",
       "tags": [],
-      "id": 6
+      "id": "6"
     },
     {
       "title": "Data post baru",
       "body": "data post baru lagi",
-      "tags": ["vue", "firebase", "bootstrap"],
-      "id": 7
+      "tags": [
+        "vue",
+        "firebase",
+        "bootstrap"
+      ],
+      "id": "7"
+    },
+    {
+      "id": "c6a7",
+      "title": "Vue.Js",
+      "body": "Learning composable function in vue.js",
+      "tags": [
+        "javascript",
+        "html",
+        "css",
+        "vue.js"
+      ]
+    },
+    {
+      "id": "94fa",
+      "title": "Laravel",
+      "body": "Learning eloquent in laravel 12",
+      "tags": [
+        "laravel",
+        "php"
+      ]
+    },
+    {
+      "id": "aa59",
+      "title": "Tailwind Css",
+      "body": "Learning tailwindcss from stratch",
+      "tags": [
+        "css"
+      ]
+    },
+    {
+      "id": "b872",
+      "title": "Laravel",
+      "body": "Learning laravel eloquent from stratch",
+      "tags": [
+        "laravel",
+        "php",
+        "eloquent"
+      ]
     }
   ]
 }
