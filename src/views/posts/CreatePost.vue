@@ -1,8 +1,12 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import db from '@/firebase/config.js'
+import { collection, addDoc } from 'firebase/firestore'
+import Loading from '@/components/Loading.vue'
 
 const router = useRouter()
+const loading = ref(false)
 
 const form = ref({
   title: '',
@@ -23,24 +27,25 @@ const handleSubmit = async () => {
   const payload = { ...form.value }
   delete payload.tag
 
-  await fetch('http://localhost:3000/posts', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(payload),
-  })
+  loading.value = true
+  try {
+    await addDoc(collection(db, 'posts'), payload)
 
-  form.value = {
-    title: '',
-    body: '',
-    tag: '',
-    tags: [],
+    form.value = {
+      title: '',
+      body: '',
+      tag: '',
+      tags: [],
+    }
+
+    alert('Post created successfully!')
+    router.push({ name: 'home' })
+  } catch (err) {
+    console.error('Error adding post:', err)
+    alert('Failed to create post.')
+  } finally {
+    loading.value = false
   }
-
-  alert('Post created successfully!')
-
-  router.push({ name: 'home' })
 }
 </script>
 
@@ -114,7 +119,10 @@ const handleSubmit = async () => {
                 </div>
 
                 <br />
-                <button class="btn btn-primary text-uppercase" type="submit">Send</button>
+                <button class="btn btn-primary text-uppercase" type="submit" :disabled="loading">
+                  <span v-if="!loading">Create Post</span>
+                  <span v-else>Creating Post...</span>
+                </button>
               </form>
             </div>
           </div>

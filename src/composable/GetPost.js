@@ -1,23 +1,37 @@
 import { ref } from 'vue'
+import { doc, getDoc } from 'firebase/firestore'
+import { useRouter } from 'vue-router'
+import db from '@/firebase/config'
 
-const getPost = (id) => {
+export default function usePost(id) {
   const post = ref(null)
   const error = ref(null)
+  const loading = ref(true)
+  const router = useRouter()
 
   const fetchData = async () => {
+    loading.value = true
     try {
-      // await new Promise((resolve) => setTimeout(resolve, 3000))
-      let data = await fetch(`http://localhost:3000/posts/${id}`)
+      const docRef = doc(db, 'posts', id)
+      const res = await getDoc(docRef)
 
-      if (!data.ok) {
-        throw new Error('Tidak ada data bung!')
+      if (!res.exists()) {
+        router.replace('/not-found') // tanpa MainLayout
+      } else {
+        post.value = { ...res.data(), id: res.id }
       }
-      post.value = await data.json()
     } catch (err) {
-      error.value = err.message
+      error.value = 'Failed to fetch post.'
+      router.replace('/not-found')
+    } finally {
+      loading.value = false
     }
   }
-  return { post, fetchData, error }
-}
 
-export default getPost
+  return {
+    post,
+    error,
+    loading,
+    fetchData,
+  }
+}

@@ -1,20 +1,26 @@
 import { ref } from 'vue'
+import db from '@/firebase/config'
+import { collection, getDocs } from 'firebase/firestore'
 
 const getPosts = () => {
   const posts = ref([])
   const error = ref(null)
+  const loading = ref(true)
 
   const fetchData = async () => {
+    loading.value = true
     try {
-      // await new Promise((resolve) => setTimeout(resolve, 3000))
-      let data = await fetch('http://localhost:3000/posts')
-
-      if (!data.ok) {
-        throw new Error('Tidak ada data bung!')
+      const res = await getDocs(collection(db, 'posts'))
+      if (res.empty) {
+        throw new Error('No posts available')
       }
-      posts.value = await data.json()
+      posts.value = res.docs.map((doc) => {
+        return { ...doc.data(), id: doc.id }
+      })
     } catch (err) {
       error.value = err.message
+    } finally {
+      loading.value = false
     }
   }
   return { posts, fetchData, error }
