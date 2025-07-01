@@ -1,3 +1,9 @@
+# 🫂 Live Demo
+
+```sh
+https://webvueblog.netlify.app/
+```
+
 # 🚀 Vue 3 Blog App with Firebase
 
 A simple blog platform built with **Vue.js 3** and **Firebase (Firestore)**.  
