@@ -1,14 +1,21 @@
-# vue-blog
+# 🚀 Vue 3 Blog App with Firebase
 
-This template should help get you started developing with Vue 3 in Vite.
+A simple blog platform built with **Vue.js 3** and **Firebase (Firestore)**.  
+Includes CRUD features for blog posts and uses Vue Router and Composition API.
 
-## Recommended IDE Setup
+---
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## 📦 Tech Stack
 
-## Customize configuration
+- ✅ Vue.js 3 (Composition API)
+- ✅ Vue Router
+- ✅ Firebase Firestore
+- ✅ Bootstrap 5
+- ✅ Vite
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+---
+
+## 🚀 Getting Started
 
 ## Project Setup
 
